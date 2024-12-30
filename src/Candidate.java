@@ -1,5 +1,8 @@
 public class Candidate {
     private String name;
+    public Candidate() {
+    }
+
 
     public Candidate(String name) {
         this.name = name;
