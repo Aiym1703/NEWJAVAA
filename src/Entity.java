@@ -25,7 +25,6 @@ public class Entity {
     public int hashCode() {
         return Integer.hashCode(id);
     }
-
     @Override
     public String toString() {
         return "Entity ID: " + id;
