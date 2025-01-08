@@ -1,9 +1,7 @@
-public class Question {
+class Question {
     private String text;
     private String answer;
 
-    public Question() {
-    }
 
     public Question(String text, String answer) {
         this.text = text;
@@ -24,5 +22,26 @@ public class Question {
 
     public void setAnswer(String answer) {
         this.answer = answer;
+    }
+    public boolean checkAnswer(String candidateAnswer) {
+        return answer.equalsIgnoreCase(candidateAnswer);
+    }
+
+    @Override
+    public String toString() {
+        return "Question: " + text;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Question question = (Question) obj;
+        return text.equals(question.text) && answer.equals(question.answer);
+    }
+
+    @Override
+    public int hashCode() {
+        return text.hashCode() + answer.hashCode();
     }
 }
