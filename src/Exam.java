@@ -1,12 +1,13 @@
+import java.util.List;
 import java.util.Scanner;
 
 public class Exam {
-    private String title; // Заголовок экзамена
+    private String title;
     private Candidate candidate;
-    private Question[] questions;
+    private List<Question> questions;
     private int score;
 
-    public Exam(String title, Candidate candidate, Question[] questions) {
+    public Exam(String title, Candidate candidate, List<Question> questions) {
         this.title = title;
         this.candidate = candidate;
         this.questions = questions;
@@ -16,16 +17,17 @@ public class Exam {
     public void start() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Welcome, " + candidate.getName() + "! Let's start the exam.");
-        for (int i = 0; i < questions.length; i++) {
-            System.out.println("Question " + (i + 1) + ": " + questions[i].getText());
+        for (int i = 0; i < questions.size(); i++) {
+            System.out.println("Question " + (i + 1) + ": " + questions.get(i).getText());
             System.out.print("Your answer: ");
             String userAnswer = scanner.nextLine().trim();
-            if (userAnswer.equalsIgnoreCase(questions[i].getAnswer())) {
+            if (userAnswer.equalsIgnoreCase(questions.get(i).getAnswer())) {
                 score++;
             }
         }
-        System.out.println("\nExam finished! You scored " + score + " out of " + questions.length);
+        System.out.println("\nExam finished! You scored " + score + " out of " + questions.size());
     }
+
     public void filterQuestions(String keyword) {
         System.out.println("Filtered questions containing: " + keyword);
         for (Question question : questions) {
@@ -36,7 +38,7 @@ public class Exam {
     }
 
     public void sortQuestions() {
-        java.util.Arrays.sort(questions, (q1, q2) -> q1.getText().compareTo(q2.getText()));
+        questions.sort((q1, q2) -> q1.getText().compareTo(q2.getText()));
         System.out.println("Questions sorted alphabetically.");
     }
 
@@ -58,5 +60,3 @@ public class Exam {
         return title.hashCode();
     }
 }
-
-

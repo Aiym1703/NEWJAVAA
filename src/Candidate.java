@@ -1,40 +1,35 @@
-class Candidate extends Entity {
+public class Candidate {
+    private int id;
     private String name;
 
-
-
     public Candidate(int id, String name) {
-        super(id);
+        this.id = id;
         this.name = name;
     }
 
-
+    public int getId() {
+        return id;
+    }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
     @Override
     public String toString() {
-        return "Candidate: " + name+ " (ID: " + getId() + ")";
+        return "Candidate: " + name + " (ID: " + id + ")";
     }
 
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        if (!super.equals(obj)) return false; // Проверяем равенство ID
         Candidate candidate = (Candidate) obj;
-        return name.equals(candidate.name);
+        return id == candidate.id && name.equals(candidate.name);
     }
-
 
     @Override
     public int hashCode() {
-        return super.hashCode() + name.hashCode();
+        return Integer.hashCode(id) + name.hashCode();
     }
-
 }
