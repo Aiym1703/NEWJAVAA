@@ -1,8 +1,6 @@
 class Candidate extends Entity {
     private String name;
 
-
-
     public Candidate(int id, String name) {
         super(id);
         this.name = name;
@@ -30,7 +28,6 @@ class Candidate extends Entity {
         Candidate candidate = (Candidate) obj;
         return name.equals(candidate.name);
     }
-
 
     @Override
     public int hashCode() {

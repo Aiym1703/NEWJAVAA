@@ -14,7 +14,6 @@ class OnlineExamSystem {
                 new Question("5*6 equals to?", "30")
         };
 
-
         Exam exam = new Exam("General Knowledge",candidate, questions);
         System.out.print("Enter a keyword to filter questions: ");
         String keyword = scanner.nextLine();
