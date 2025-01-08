@@ -21,7 +21,6 @@ class OnlineExamSystem {
         exam.filterQuestions(keyword);
         System.out.println("Sorting questions...");
         exam.sortQuestions();
-
         exam.start();
     }
 }
