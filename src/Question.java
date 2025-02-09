@@ -1,28 +1,47 @@
-public class Question extends AbstractQuestion {
+class Question {
+    private String text;
+    private String answer;
 
-    // Конструктор
+
     public Question(String text, String answer) {
-        super(text, answer);
+        this.text = text;
+        this.answer = answer;
     }
 
-    public Question(int id, String question, String answer) {
-        super(2);
+    public String getText() {
+        return text;
     }
 
-    // Реализация метода проверки правильности ответа
-    @Override
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getAnswer() {
+        return answer;
+    }
+
+    public void setAnswer(String answer) {
+        this.answer = answer;
+    }
     public boolean checkAnswer(String candidateAnswer) {
-        return getAnswer().equalsIgnoreCase(candidateAnswer);
+        return answer.equalsIgnoreCase(candidateAnswer);
     }
 
-    // Переопределение toString() (уже в AbstractQuestion, но можем дополнить при необходимости)
     @Override
     public String toString() {
-        return "Text Question: " + getText() + ", Answer: " + getAnswer();
+        return "Question: " + text;
     }
 
     @Override
-    public String getQuestion() {
-        return "";
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Question question = (Question) obj;
+        return text.equals(question.text) && answer.equals(question.answer);
+    }
+
+    @Override
+    public int hashCode() {
+        return text.hashCode() + answer.hashCode();
     }
 }
